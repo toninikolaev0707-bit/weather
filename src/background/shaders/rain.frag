@@ -34,7 +34,7 @@ half4 main(float2 coord) {
   vec2 p = coord / size;
   // Remove aspect ratio
   p.x *= size.x / size.y;
-  float alpha = 0.0;
+  float alpha = 0.45;
 
   // Exponential speed from the input
   float baseSpeed = pow(speed - 0.5, 2.0);
@@ -61,5 +61,5 @@ half4 main(float2 coord) {
     alpha += mist(p * 5.0 * tiling, baseSpeed + 5) * intensity;
   }
 
-  return vec4(1.0) * alpha * 0.5;
+  return vec4(1.0) * alpha * 0.3;
 }
