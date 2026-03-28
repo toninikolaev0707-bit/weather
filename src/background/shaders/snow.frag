@@ -62,5 +62,5 @@ half4 main(float2 coord) {
     alpha += mist(p * 5.0 * tiling, baseSpeed) * intensity;
   }
 
-  return vec4(1.0) * alpha * 0.8;
+  return vec4(1.0) * alpha * 0;
 }
