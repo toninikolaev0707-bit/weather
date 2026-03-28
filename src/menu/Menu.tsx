@@ -330,7 +330,8 @@ function MenuControls({ items }: { items: Item[] }) {
             <MenuItem value="FIRE">Fire</MenuItem>
             <MenuItem value="CLOUD">Cloud</MenuItem>
             <MenuItem value="BLOOM">Bloom</MenuItem>
-            <MenuItem value="AURALINES">Аура линии свэг</MenuItem>
+            <MenuItem value="AURALINES">Aura swag line</MenuItem>
+            <MenuItem value="BLIZZARD">Blizzard</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
