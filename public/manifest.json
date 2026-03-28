@@ -1,10 +1,10 @@
 {
-  "name": "Weather",
+  "name": "Weather GNIDS edition",
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "Owlbear Rodeo",
   "homepage_url": "https://extensions.owlbear.rodeo/weather",
   "icon": "/logo.png",
-  "description": "Add weather like rain and snow to your maps",
+  "description": "Добавляй свэговую погоду на карту! Вра еб",
   "background_url": "/background.html"
 }
