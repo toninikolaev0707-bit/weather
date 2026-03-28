@@ -324,7 +324,7 @@ function MenuControls({ items }: { items: Item[] }) {
               },
             }}
           >
-            <MenuItem value="SNOW">Snow</MenuItem>
+            <MenuItem value="SNOW">Clear</MenuItem>
             <MenuItem value="RAIN">Rain</MenuItem>
             <MenuItem value="SAND">Sand</MenuItem>
             <MenuItem value="FIRE">Fire</MenuItem>
