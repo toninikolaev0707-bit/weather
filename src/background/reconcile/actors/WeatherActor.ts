@@ -5,6 +5,7 @@ import { WeatherConfig } from "../../../types/WeatherConfig";
 import { getMetadata } from "../../../util/getMetadata";
 import { getPluginId } from "../../../util/getPluginId";
 
+import auralines from "../../shaders/AuraLines.frag";
 import snow from "../../shaders/snow.frag";
 import rain from "../../shaders/rain.frag";
 import fire from "../../shaders/fire.frag";
@@ -72,6 +73,8 @@ export class WeatherActor extends Actor {
       return rain;
     } else if (config.type === "FIRE") {
       return fire;
+    } else if (config.type === "AURALINES") {
+      return auralines;
     } else if (config.type === "SAND") {
       return sand;
     } else if (config.type === "CLOUD") {
