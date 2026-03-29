@@ -20,6 +20,22 @@ float rain(vec2 p, float jitter, vec2 direction, float speed, float size, float 
 
 
 half4 main(float2 coord) {
+
+// ===== SCREEN SHAKE =====
+  float shakeStrength = 2.0;
+
+  vec2 shake = vec2(
+    sin(time * 40.0),
+    cos(time * 37.0)
+  );
+
+  // нормализация под экран
+  shake *= shakeStrength / size;
+
+  // применяем
+  coord += shake * size;
+
+
   vec2 p = coord / size;
   // Remove aspect ratio
   p.x *= size.x / size.y;
