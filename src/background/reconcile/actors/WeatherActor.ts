@@ -5,6 +5,9 @@ import { WeatherConfig } from "../../../types/WeatherConfig";
 import { getMetadata } from "../../../util/getMetadata";
 import { getPluginId } from "../../../util/getPluginId";
 
+import leafsautumn from "../../shaders/leafsautumn.frag";
+import leafsgoldenpromax from "../../shaders/leafsgoldenpromax.frag";
+import leafsgreen from "../../shaders/leafsgreen.frag";
 import blizzard from "../../shaders/Blizzard.frag";
 import auralines from "../../shaders/AuraLines.frag";
 import snow from "../../shaders/snow.frag";
@@ -72,6 +75,12 @@ export class WeatherActor extends Actor {
   private getSkslFromConfig(config: WeatherConfig) {
     if (config.type === "RAIN") {
       return rain;
+    } else if (config.type === "LEAFSGOLDENPROMAX") {
+      return leafsgoldenpromax;
+    } else if (config.type === "LEAFSAUTUMN") {
+      return leafsautumn;
+    } else if (config.type === "LEAFSGREEN") {
+      return leafsgreen;
     } else if (config.type === "FIRE") {
       return fire;
     } else if (config.type === "BLIZZARD") {
