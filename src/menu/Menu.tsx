@@ -331,6 +331,9 @@ function MenuControls({ items }: { items: Item[] }) {
             <MenuItem value="CLOUD">Cloud</MenuItem>
             <MenuItem value="BLOOM">Sukuna Shrine</MenuItem>
             <MenuItem value="AURALINES">Aura swag line</MenuItem>
+            <MenuItem value="LEAFSGREEN">Leafs green</MenuItem>
+            <MenuItem value="LEAFSAUTUMN">Leafs autumn</MenuItem>
+            <MenuItem value="LEAFSGOLDENPROMAX">Leafs golden Pro MAX</MenuItem>
             <MenuItem value="BLIZZARD">Blizzard</MenuItem>
           </Select>
         </FormControl>
