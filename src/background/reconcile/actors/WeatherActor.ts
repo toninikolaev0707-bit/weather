@@ -31,46 +31,55 @@ export class WeatherActor extends Actor {
     this.reconciler.patcher.deleteItems(this.effect);
   }
 
-  update(parent: Item) {
-    const config = getMetadata<WeatherConfig>(
-      parent.metadata,
-      getPluginId("weather"),
-      { type: "SNOW" }
-    );
-    this.reconciler.patcher.updateItems([
-      this.effect,
-      (item) => {
-        if (isEffect(item)) {
-          this.applyWeatherConfig(item, config);
-          this.applyWeatherLayer(item, parent);
-        }
-      },
-    ]);
-  }
+	update(parent: Item) {
+	  const config = getMetadata<WeatherConfig>(
+		parent.metadata,
+		getPluginId("weather"),
+		{ type: "SNOW" }
+	  );
 
-  private parentToEffect(parent: Item) {
-    const config = getMetadata<WeatherConfig>(
-      parent.metadata,
-      getPluginId("weather"),
-      { type: "SNOW" }
-    );
-    const effect = buildEffect()
-      .attachedTo(parent.id)
-      .visible(parent.visible)
-      .position(parent.position)
-      .rotation(parent.rotation)
-      .effectType("ATTACHMENT")
-      .locked(true)
-      .disableHit(true)
-      .disableAttachmentBehavior(["COPY"])
-      .disableAutoZIndex(true)
-      .build();
+	  this.reconciler.patcher.updateItems([
+		this.effect,
+		(item) => {
+		  if (isEffect(item)) {
+			this.applyWeatherConfig(item, config);
+			this.applyWeatherLayer(item, parent);
 
-    this.applyWeatherConfig(effect, config);
-    this.applyWeatherLayer(effect, parent);
+			// FOG всегда показывает погоду,
+			// остальные слои следуют видимости родителя
+			const isFog = parent.layer === "FOG";
+			item.visible = isFog ? true : parent.visible;
+		  }
+		},
+	  ]);
+	}
 
-    return effect;
-  }
+	private parentToEffect(parent: Item) {
+	  const config = getMetadata<WeatherConfig>(
+		parent.metadata,
+		getPluginId("weather"),
+		{ type: "SNOW" }
+	  );
+
+	  const isFog = parent.layer === "FOG";
+
+	  const effect = buildEffect()
+		.attachedTo(parent.id)
+		.visible(isFog ? true : parent.visible)
+		.position(parent.position)
+		.rotation(parent.rotation)
+		.effectType("ATTACHMENT")
+		.locked(true)
+		.disableHit(true)
+		.disableAttachmentBehavior(["COPY"])
+		.disableAutoZIndex(true)
+		.build();
+
+	  this.applyWeatherConfig(effect, config);
+	  this.applyWeatherLayer(effect, parent);
+
+	  return effect;
+	}
 
   private getSkslFromConfig(config: WeatherConfig) {
     if (config.type === "RAIN") {
