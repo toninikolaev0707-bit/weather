@@ -123,16 +123,7 @@ export class WeatherActor extends Actor {
   }
 
   private applyWeatherLayer(effect: Effect, parent: Item) {
-    // If the parent is on the fog layer this effect should be put above it
-    // If it is on the map layer put the effect at the bottom of the ruler layer
-    const isFog = parent.layer === "FOG";
-    const layer = isFog ? "FOG" : "RULER";
-    const zIndex = isFog ? parent.zIndex + 1 : 0;
-    if (effect.layer !== layer) {
-      effect.layer = layer;
-    }
-    if (effect.zIndex !== zIndex) {
-      effect.zIndex = zIndex;
-    }
+    effect.layer = "RULER";
+    effect.zIndex = parent.zIndex + 1;
   }
 }
